@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<title>我的音乐</title>
+
+{% load static %}
+    <link type="image/x-icon" rel="shortcut icon" href="{% static "favicon.ico" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "css/common.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/change.css" %}" />
+    <style>
+        .wrapper {
+    width: 980px;
+    margin: 0 auto
+}
+        .header {
+    height: 56px;
+    padding: 30px 0
+}
+
+.header .logo {
+    float: left;
+    width: 218px;
+    height: 56px;
+    margin: 0 18px 0 0;
+    overflow: hidden;
+    font-size: 24px;
+    color: #30C37E;
+}
+
+.header .logo-tip {
+    float: left;
+     margin: 80px 80px 0;
+    font: 40px/34px "Microsoft YaHei", arial;
+    color: #30C37E;
+
+}
+
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header clearfix">
+        <a href="/" class="logo">我的音乐</a>
+        <span class="logo-tip">Hi,我的音乐欢迎您!</span>
+    </div>
+</div>
+<div class="control" style="border: 3px solid #30C37E">
+    <div class="item" >
+        <div class="active" style="background-color: #30C37E">登录</div><div>注册</div>
+    </div>
+    <div class="content">
+        <form action="/user/login.html" method="post">
+            {% csrf_token %}
+        <div style="display: block;">
+            <input type="text" placeholder="请输入邮箱" name="mail" style="margin-bottom: 30px"/> <br/>
+            <input type="password" placeholder="请输入密码" name="password" /><br>
+             <input type="text" placeholder="请输入验证码" name="code" id ="code" style="height:30px;width: 160px;">
+            <span><img src="/user/code/" style="margin-top: 18px"></span><br/>
+            <br/>
+            {{ tips }}<br/>
+            <input type="submit" value="登录"/>
+        </div>
+        </form>
+    </div>
+</div>
+<script src="{% static "js/change.js" %}"></script>
+</body>
+</html>
